@@ -1,5 +1,7 @@
 import Veggie from "../components/Veggie";
 import Popular from "../components/Popular";
+import Categories from "../components/Categories";
+import Container from "../components/Container";
 import Head from "next/head";
 export default function Home() {
   // fetch(
@@ -8,13 +10,14 @@ export default function Home() {
   //   .then((res) => res.json())
   //   .then((recipe) => console.log(recipe));
   return (
-    <div className="container mx-auto">
+    <Container>
       <Head>
-        <title>My page title</title>
+        <title>Home Page</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <Categories />
       <Veggie />
       <Popular />
-    </div>
+    </Container>
   );
 }
