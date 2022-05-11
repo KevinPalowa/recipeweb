@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
+import Categories from "../../components/Categories";
 import Search from "../../components/Search";
+import { useEffect, useState } from "react";
 import Container from "../../components/Container";
 import Card from "../../components/Card";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Categories from "../../components/Categories";
-function Cuisine() {
+function Home() {
   const [cuisine, setCuisine] = useState([]);
   const router = useRouter();
-  const { name } = router.query;
+  const { query } = router.query;
   useEffect(() => {
     if (router.isReady) {
-      getCuisine(name);
+      getCuisine(query);
     }
   }, [router]);
   const getCuisine = async (name) => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_API_KEY}&cuisine=${name}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_API_KEY}&query=${name}`
     );
     const data = await api.json();
     setCuisine(data.results);
@@ -48,4 +48,4 @@ function Cuisine() {
   );
 }
 
-export default Cuisine;
+export default Home;
