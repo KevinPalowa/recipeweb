@@ -1,4 +1,5 @@
 import Veggie from "../components/Veggie";
+import Nav from '../components/Nav'
 import Popular from "../components/Popular";
 import Categories from "../components/Categories";
 import Container from "../components/Container";
@@ -17,6 +18,7 @@ export default function Home() {
         <title>Home Page</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+        <Nav/>
       <Categories />
       <Search />
       <motion.div

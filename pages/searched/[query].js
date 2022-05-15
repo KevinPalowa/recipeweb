@@ -1,8 +1,11 @@
 import Categories from "../../components/Categories";
+import Nav from "../../components/Nav";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Search from "../../components/Search";
 import { useEffect, useState } from "react";
 import Container from "../../components/Container";
+import Head from "next/head";
 import Card from "../../components/Card";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -24,9 +27,20 @@ function Home() {
   };
   return (
     <Container>
+      <Head>
+        <title>{query} - Foodies</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Nav />
       <Categories />
       <Search />
-      <div className="mt-3 grid grid-cols-4 gap-4">
+      <motion.div
+        className="mt-3 grid grid-cols-4 gap-4"
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {cuisine.map((recipe) => {
           return (
             <Link href={`/recipe/${recipe.id}`}>
@@ -48,7 +62,7 @@ function Home() {
             </Link>
           );
         })}
-      </div>
+      </motion.div>
     </Container>
   );
 }

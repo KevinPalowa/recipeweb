@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Head from "next/head";
 import Search from "../../components/Search";
 import Container from "../../components/Container";
 import Card from "../../components/Card";
@@ -7,6 +8,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Categories from "../../components/Categories";
 import Link from "next/link";
+import Nav from "../../components/Nav";
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
   const router = useRouter();
@@ -25,6 +27,11 @@ function Cuisine() {
   };
   return (
     <Container>
+      <Head>
+        <title>{name} Cuisine - Foodies</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Nav />
       <Categories />
       <Search />
       <motion.div
@@ -32,7 +39,7 @@ function Cuisine() {
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
-        transition={{duration:0.5}}
+        transition={{ duration: 0.5 }}
       >
         {cuisine.map((recipe) => {
           return (

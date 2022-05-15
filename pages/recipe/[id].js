@@ -1,6 +1,9 @@
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+import Nav from "../../components/Nav";
 import Container from "../../components/Container";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Search from "../../components/Search";
@@ -27,9 +30,20 @@ function Recipe() {
   if (isLoading) return <p>Loading...</p>;
   return (
     <Container>
+      <Head>
+        <title>{recipe.title} - Foodies</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Nav />
       <Categories />
       <Search />
-      <div className="flex my-5">
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex my-5"
+      >
         <div className=" relative w-1/2">
           <h2 className="font-semibold">{recipe.title}</h2>
           {/* <h2 className="relative font-semibold">Judul</h2> */}
@@ -85,7 +99,7 @@ function Recipe() {
             </ul>
           )}
         </div>
-      </div>
+      </motion.div>
     </Container>
   );
 }
