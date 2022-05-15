@@ -1,4 +1,5 @@
 import Categories from "../../components/Categories";
+import Link from "next/link";
 import Search from "../../components/Search";
 import { useEffect, useState } from "react";
 import Container from "../../components/Container";
@@ -28,19 +29,23 @@ function Home() {
       <div className="mt-3 grid grid-cols-4 gap-4">
         {cuisine.map((recipe) => {
           return (
-            <Card key={recipe.id}>
-              <Image
-                className="rounded-xl"
-                src={recipe.image}
-                alt={recipe.title}
-                width={100}
-                height={70}
-                layout="responsive"
-              />
-              <p className="text-center  font-semibold p-4 text-xs">
-                {recipe.title}
-              </p>
-            </Card>
+            <Link href={`/recipe/${recipe.id}`}>
+              <a>
+                <Card key={recipe.id}>
+                  <Image
+                    className="rounded-xl"
+                    src={recipe.image}
+                    alt={recipe.title}
+                    width={100}
+                    height={70}
+                    layout="responsive"
+                  />
+                  <p className="text-center  font-semibold p-4 text-xs">
+                    {recipe.title}
+                  </p>
+                </Card>
+              </a>
+            </Link>
           );
         })}
       </div>

@@ -4,6 +4,7 @@ import Categories from "../components/Categories";
 import Container from "../components/Container";
 import Head from "next/head";
 import Search from "../components/Search";
+import { motion } from "framer-motion";
 export default function Home() {
   // fetch(
   //   `https://api.spoonacular.com/recipes/716429/information?apiKey=${process.env.REACT_API_KEY}`
@@ -18,8 +19,15 @@ export default function Home() {
       </Head>
       <Categories />
       <Search />
-      <Veggie />
-      <Popular />
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Veggie />
+        <Popular className="mt-5" />
+      </motion.div>
     </Container>
   );
 }

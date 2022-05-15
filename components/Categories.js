@@ -4,7 +4,7 @@ import { GiNoodles, GiChopsticks } from "react-icons/gi";
 
 function Categories() {
   return (
-    <ul className="flex justify-center my-5 text-white">
+    <ul className="flex justify-center mb-5 text-white">
       <Link href="/cuisine/Italian">
         <a className="mr-5 active:bg-gradient-to-r active:from-[#f27121] active:to-[#e94057] flex flex-col justify-center items-center w-16 h-16 bg-gradient-to-r from-[#494949] to-[#313131] rounded-full ">
           <FaPizzaSlice className="text-lg" />
