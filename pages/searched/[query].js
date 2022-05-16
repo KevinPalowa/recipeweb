@@ -1,14 +1,10 @@
-import Categories from "../../components/Categories";
-import Nav from "../../components/Nav";
-import { motion } from "framer-motion";
+import Layout from "../../components/Layout";
 import Link from "next/link";
-import Search from "../../components/Search";
-import { useEffect, useState } from "react";
-import Container from "../../components/Container";
-import Head from "next/head";
 import Card from "../../components/Card";
-import { useRouter } from "next/router";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 function Home() {
   const [cuisine, setCuisine] = useState([]);
   const router = useRouter();
@@ -26,14 +22,7 @@ function Home() {
     setCuisine(data.results);
   };
   return (
-    <Container>
-      <Head>
-        <title>{query} - Foodies</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <Nav />
-      <Categories />
-      <Search />
+    <Layout title={`${query} - Foodies`}>
       <motion.div
         className="mt-3 grid grid-cols-4 gap-4"
         animate={{ opacity: 1 }}
@@ -43,9 +32,9 @@ function Home() {
       >
         {cuisine.map((recipe) => {
           return (
-            <Link href={`/recipe/${recipe.id}`}>
+            <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
               <a>
-                <Card key={recipe.id}>
+                <Card>
                   <Image
                     className="rounded-xl"
                     src={recipe.image}
@@ -63,7 +52,7 @@ function Home() {
           );
         })}
       </motion.div>
-    </Container>
+    </Layout>
   );
 }
 

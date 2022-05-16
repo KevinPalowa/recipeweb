@@ -1,13 +1,8 @@
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import Nav from "../../components/Nav";
-import Container from "../../components/Container";
+import Layout from "../../components/Layout";
 import { useEffect, useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
-import Search from "../../components/Search";
-import Categories from "../../components/Categories";
 function Recipe() {
   const [recipe, setRecipe] = useState([]);
   const [activeTab, setActiveTab] = useState("instruction");
@@ -29,14 +24,7 @@ function Recipe() {
   };
   if (isLoading) return <p>Loading...</p>;
   return (
-    <Container>
-      <Head>
-        <title>{recipe.title} - Foodies</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <Nav />
-      <Categories />
-      <Search />
+    <Layout title={`${recipe.title} - Foodies`}>
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
@@ -100,7 +88,7 @@ function Recipe() {
           )}
         </div>
       </motion.div>
-    </Container>
+    </Layout>
   );
 }
 

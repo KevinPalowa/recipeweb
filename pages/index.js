@@ -1,10 +1,6 @@
 import Veggie from "../components/Veggie";
-import Nav from '../components/Nav'
 import Popular from "../components/Popular";
-import Categories from "../components/Categories";
-import Container from "../components/Container";
-import Head from "next/head";
-import Search from "../components/Search";
+import Layout from "../components/Layout";
 import { motion } from "framer-motion";
 export default function Home() {
   // fetch(
@@ -13,14 +9,7 @@ export default function Home() {
   //   .then((res) => res.json())
   //   .then((recipe) => console.log(recipe));
   return (
-    <Container>
-      <Head>
-        <title>Home Page</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-        <Nav/>
-      <Categories />
-      <Search />
+    <Layout title="Home Page">
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
@@ -30,6 +19,6 @@ export default function Home() {
         <Veggie />
         <Popular className="mt-5" />
       </motion.div>
-    </Container>
+    </Layout>
   );
 }

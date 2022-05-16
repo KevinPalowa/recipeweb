@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Head from "next/head";
-import Search from "../../components/Search";
-import Container from "../../components/Container";
+import Layout from "../../components/Layout";
 import Card from "../../components/Card";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Categories from "../../components/Categories";
 import Link from "next/link";
-import Nav from "../../components/Nav";
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
   const router = useRouter();
@@ -26,14 +22,7 @@ function Cuisine() {
     setCuisine(data.results);
   };
   return (
-    <Container>
-      <Head>
-        <title>{name} Cuisine - Foodies</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <Nav />
-      <Categories />
-      <Search />
+    <Layout title={`${name} Cuisine - Foodies`}>
       <motion.div
         className="mt-3 grid grid-cols-4 gap-4"
         animate={{ opacity: 1 }}
@@ -43,9 +32,9 @@ function Cuisine() {
       >
         {cuisine.map((recipe) => {
           return (
-            <Link href={`/recipe/${recipe.id}`}>
+            <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
               <a>
-                <Card key={recipe.id}>
+                <Card>
                   <Image
                     className="rounded-xl"
                     src={recipe.image}
@@ -63,7 +52,7 @@ function Cuisine() {
           );
         })}
       </motion.div>
-    </Container>
+    </Layout>
   );
 }
 
