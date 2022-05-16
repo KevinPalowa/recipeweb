@@ -25,13 +25,7 @@ function Recipe() {
   if (isLoading) return <p>Loading...</p>;
   return (
     <Layout title={`${recipe.title} - Foodies`}>
-      <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="flex my-5"
-      >
+      <div className="flex my-5">
         <div className=" relative w-1/2">
           <h2 className="font-semibold">{recipe.title}</h2>
           {/* <h2 className="relative font-semibold">Judul</h2> */}
@@ -87,7 +81,7 @@ function Recipe() {
             </ul>
           )}
         </div>
-      </motion.div>
+      </div>
     </Layout>
   );
 }

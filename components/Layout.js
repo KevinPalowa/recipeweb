@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import Categories from "./Categories";
 import Search from "./Search";
 import Head from "next/head";
+import { motion } from "framer-motion";
 function Layout({ children, title }) {
   return (
     <Container>
@@ -13,7 +14,15 @@ function Layout({ children, title }) {
       <Nav />
       <Categories />
       <Search />
-      {children}
+
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {children}
+      </motion.div>
     </Container>
   );
 }

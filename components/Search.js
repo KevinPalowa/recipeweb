@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useRouter } from "next/router";
 function Search() {
   const [input, setInput] = useState("");
   const router = useRouter();
+  useEffect(() => {
+    setInput(router.query.query);
+  }, []);
   const submitHandler = (e) => {
     e.preventDefault();
 
-    router.push(`/searched/${input.replace(" ","+")}`);
+    router.push(`/searched/${input.replace(" ", "+")}`);
   };
   return (
     <form
